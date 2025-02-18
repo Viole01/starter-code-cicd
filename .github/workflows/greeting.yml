@@ -11,4 +11,4 @@ jobs:
               run: |
                 echo "Hello, Workflow!"
                 echo "${{ toJson(github) }}"
-                git clone https://github.com/Viole01/${{ github.repository }}.git
+                git clone https://github.com/${{ github.repository }}.git
