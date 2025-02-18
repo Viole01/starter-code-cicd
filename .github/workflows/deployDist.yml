@@ -4,7 +4,7 @@ on: [push, workflow_dispatch] # Run the workflow on these events
 #     - push
 #     - workflow_dispatch
 jobs:
-    test:
+    Test:
         runs-on: ubuntu-latest
         steps:
             - name: Get Code
@@ -28,8 +28,8 @@ jobs:
             - name: Run Tests
               run: npm run test
 
-    deploy:
-      needs: test # The deploy job depends on the test job
+    Deploy:
+      needs: Test # The deploy job depends on the test job
       runs-on: ubuntu-latest
       steps:
         - name: Get Code
