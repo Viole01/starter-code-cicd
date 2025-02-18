@@ -27,3 +27,21 @@ jobs:
 
             - name: Run Tests
               run: npm run test
+
+    deploy:
+      needs: test # The deploy job depends on the test job
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get Code
+          uses: actions/checkout@v4
+
+        - name: Setup Node Environment
+          uses: actions/setup-node@v4
+          with:
+            node-version: '22'
+
+        - name: Install Dependencies
+          run: npm ci
+
+        - name: Build Project
+          run: npm run build
