@@ -8,7 +8,22 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Get Code
-              run: |
-                echo "Hello, Workflow!"
-                echo "${{ toJson(github) }}"
-                git clone https://github.com/${{ github.repository }}.git
+              uses: actions/checkout@v4
+              # run: |
+              #   echo "cloning repo.."
+              #   echo "${{ toJson(github) }}"
+              #   git clone https://github.com/${{ github.repository }}.git
+
+            - name: Setup Node Environment
+              uses: actions/setup-node@v4
+              with:
+                node-version: '22'
+
+            - name: Check Node Version
+              run: node -v
+
+            - name: Install Dependencies
+              run: npm ci
+
+            - name: Run Tests
+              run: npm run test
