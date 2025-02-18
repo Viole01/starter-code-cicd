@@ -1,14 +1,8 @@
-name: Deploy Dist
-on: [push, workflow_dispatch] # Run the workflow on these events
-# on: # Run the workflow on these events
-#     - push
-#     - workflow_dispatch
+name: Greeting
+on: push # Run the workflow on push events
 jobs:
-    test:
+    greet:
         runs-on: ubuntu-latest
         steps:
-            - name: Get Code
-              run: |
-                echo "Hello, Workflow!"
-                echo "${{ toJson(github) }}"
-                git clone https://github.com/${{ github.repository }}.git
+            - name: "greet user"
+              run: echo "Hello, Workflow!"
